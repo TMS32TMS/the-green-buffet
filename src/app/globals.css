@@ -13,3 +13,7 @@ body {
   background: var(--color-brand-cream);
   color: var(--color-brand-dark);
 }
+
+html {
+  scroll-behavior: smooth;
+}

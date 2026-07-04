@@ -102,3 +102,27 @@ export const MENU_ITEMS = [
     popular: false,
   },
 ];
+
+export const LOCATION_INFO = {
+  name: 'The Green Buffet',
+  address: '742 Evergreen Terrace',
+  city: 'Portland',
+  state: 'OR',
+  zip: '97201',
+  phone: '(503) 555-0147',
+  email: 'hello@thegreenbuffet.com',
+  hours: {
+    monday: '10:00 AM - 9:00 PM',
+    tuesday: '10:00 AM - 9:00 PM',
+    wednesday: '10:00 AM - 9:00 PM',
+    thursday: '10:00 AM - 9:00 PM',
+    friday: '10:00 AM - 10:00 PM',
+    saturday: '9:00 AM - 10:00 PM',
+    sunday: '9:00 AM - 8:00 PM',
+  },
+  coordinates: {
+    lat: 45.5155,
+    lng: -122.6789,
+  },
+  googleMapsUrl: 'https://maps.google.com/?q=The+Green+Buffet+Portland+OR',
+};
