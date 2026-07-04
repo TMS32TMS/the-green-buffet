@@ -6,8 +6,10 @@ export default function LocationSection() {
     LOCATION_INFO;
 
   const fullAddress = `${address}, ${city}, ${state} ${zip}`;
-  // Fixed: Correctly wrapped the variable in ${}
-  const mapsEmbedUrl = `https://www.google.com/maps/embed/v1/place?key=YOUR_API_KEY&q=${encodeURIComponent(fullAddress)}`;
+
+  // Real Google Maps embed URL
+  const mapsEmbedUrl =
+    'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d240.38916837266834!2d28.31275684193476!3d-15.41831136162428!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x19408de85e1ab8bb%3A0xd44185ec4f650f44!2sLiberty%20mall%20limited!5e0!3m2!1sen!2szm!4v1783191339808!5m2!1sen!2szm';
 
   const today = new Date().toLocaleDateString('en-US', { weekday: 'long' }).toLowerCase();
   const todayHours = hours[today as keyof typeof hours] || 'Closed';
@@ -15,6 +17,7 @@ export default function LocationSection() {
   return (
     <section className="py-16 md:py-20 bg-brand-cream" id="location">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Section header */}
         <div className="text-center mb-12">
           <span className="text-brand-fresh font-semibold text-sm uppercase tracking-wider">
             Come Visit Us
@@ -23,20 +26,24 @@ export default function LocationSection() {
             Find Us
           </h2>
           <p className="text-gray-600 max-w-2xl mx-auto text-lg">
-            Fresh food, friendly faces. We are conveniently located and ready to
+            Fresh food, friendly faces. We&apos;re conveniently located and ready to
             serve you.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          {/* Map placeholder */}
+          {/* Map with real embed */}
           <div className="bg-white rounded-3xl shadow-lg overflow-hidden min-h-[400px] relative">
             <iframe
-              title="Location Map"
               src={mapsEmbedUrl}
-              className="absolute inset-0 w-full h-full border-0"
+              width="100%"
+              height="100%"
+              style={{ border: 0 }}
               allowFullScreen
               loading="lazy"
+              referrerPolicy="strict-origin-when-cross-origin"
+              title={`Map showing ${name} at ${fullAddress}`}
+              className="absolute inset-0 w-full h-full"
             />
           </div>
 
@@ -50,7 +57,7 @@ export default function LocationSection() {
                 </div>
                 <div>
                   <h3 className="font-bold text-brand-dark text-lg mb-1">
-                    {name}
+                    Address
                   </h3>
                   <p className="text-gray-600">{address}</p>
                   <p className="text-gray-600">
@@ -63,6 +70,19 @@ export default function LocationSection() {
                     className="inline-flex items-center gap-2 text-brand-forest hover:text-brand-leaf font-medium mt-3 transition-colors"
                   >
                     Get Directions
+                    <svg
+                      className="w-4 h-4"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
+                    >
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                      />
+                    </svg>
                   </a>
                 </div>
               </div>
@@ -75,12 +95,9 @@ export default function LocationSection() {
                   <HiClock className="w-6 h-6 text-brand-forest" />
                 </div>
                 <div className="flex-1">
-                  <div className="flex justify-between items-center mb-3">
-                    <h3 className="font-bold text-brand-dark text-lg">Opening Hours</h3>
-                    <span className="text-xs font-bold text-brand-forest bg-brand-forest/10 px-2 py-1 rounded">
-                      Today: {todayHours}
-                    </span>
-                  </div>
+                  <h3 className="font-bold text-brand-dark text-lg mb-3">
+                    Opening Hours
+                  </h3>
                   <div className="space-y-2">
                     {Object.entries(hours).map(([day, time]) => {
                       const isToday = day === today;
@@ -88,10 +105,15 @@ export default function LocationSection() {
                         <div
                           key={day}
                           className={`flex justify-between text-sm ${
-                            isToday ? 'text-brand-forest font-bold' : 'text-gray-600'
+                            isToday
+                              ? 'text-brand-forest font-bold'
+                              : 'text-gray-600'
                           }`}
                         >
-                          <span className="capitalize">{day}</span>
+                          <span className="capitalize">
+                            {day}
+                            {isToday && ' (Today)'}
+                          </span>
                           <span>{time}</span>
                         </div>
                       );
@@ -108,7 +130,9 @@ export default function LocationSection() {
                   <HiPhone className="w-6 h-6 text-brand-forest" />
                 </div>
                 <div className="flex-1">
-                  <h3 className="font-bold text-brand-dark text-lg mb-3">Contact</h3>
+                  <h3 className="font-bold text-brand-dark text-lg mb-3">
+                    Contact
+                  </h3>
                   <div className="space-y-3">
                     <a
                       href={`tel:${phone.replace(/[^0-9]/g, '')}`}

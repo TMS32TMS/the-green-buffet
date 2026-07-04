@@ -126,7 +126,8 @@ export default function Footer() {
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                 >
                   <HiPhone className="w-4 h-4 text-brand-fresh" />
-                  (503) 555-0147
+                  +260 97 2699005
+
                 </a>
               </li>
               <li>
@@ -135,15 +136,15 @@ export default function Footer() {
                   className="flex items-center gap-3 text-gray-400 hover:text-white transition-colors"
                 >
                   <HiMail className="w-4 h-4 text-brand-fresh" />
-                  hello@thegreenbuffet.com
+                  thegreenbuffet@gmail.com
                 </a>
               </li>
               <li className="flex items-start gap-3 text-gray-400">
                 <HiLocationMarker className="w-4 h-4 text-brand-fresh mt-0.5" />
                 <span>
-                  742 Evergreen Terrace
+                  Plot 4718
                   <br />
-                  Portland, OR 97201
+                  Lusaka
                 </span>
               </li>
             </ul>
@@ -155,19 +156,19 @@ export default function Footer() {
             <ul className="space-y-2 text-gray-400 text-sm">
               <li className="flex justify-between">
                 <span>Mon - Thu</span>
-                <span>10am - 9pm</span>
+                <span>08:30am - 07:30pm</span>
               </li>
               <li className="flex justify-between">
                 <span>Friday</span>
-                <span>10am - 10pm</span>
+                <span>08:30am - 07:30pm</span>
               </li>
               <li className="flex justify-between">
                 <span>Saturday</span>
-                <span>9am - 10pm</span>
+                <span>08:30am - 07:30pm</span>
               </li>
               <li className="flex justify-between">
                 <span>Sunday</span>
-                <span>9am - 8pm</span>
+                <span>08:30am - 03:00pm</span>
               </li>
             </ul>
           </div>

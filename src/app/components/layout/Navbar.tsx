@@ -2,14 +2,35 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { HiMenu, HiX } from 'react-icons/hi';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const isActive = (path: string) => {
+    if (path === '/') return pathname === '/';
+    return pathname.startsWith(path);
+  };
+
+  const linkClasses = (path: string) =>
+    `transition-colors ${
+      isActive(path)
+        ? 'text-brand-forest font-semibold'
+        : 'text-brand-dark hover:text-brand-forest'
+    }`;
+
+  const mobileLinkClasses = (path: string) =>
+    `block py-2 transition-colors ${
+      isActive(path)
+        ? 'text-brand-forest font-semibold'
+        : 'text-brand-dark hover:text-brand-forest'
+    }`;
 
   return (
     <nav
@@ -28,22 +49,13 @@ export default function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-8">
-            <Link
-              href="/menu"
-              className="text-brand-dark hover:text-brand-forest transition-colors"
-            >
+            <Link href="/menu" className={linkClasses('/menu')}>
               Menu
             </Link>
-            <Link
-              href="/about"
-              className="text-brand-dark hover:text-brand-forest transition-colors"
-            >
+            <Link href="/about" className={linkClasses('/about')}>
               About
             </Link>
-            <Link
-              href="/location"
-              className="text-brand-dark hover:text-brand-forest transition-colors"
-            >
+            <Link href="/location" className={linkClasses('/location')}>
               Location
             </Link>
             <Link
@@ -76,21 +88,21 @@ export default function Navbar() {
           <div className="px-4 py-3 space-y-3">
             <Link
               href="/menu"
-              className="block text-brand-dark hover:text-brand-forest transition-colors py-2"
+              className={mobileLinkClasses('/menu')}
               onClick={() => setIsMenuOpen(false)}
             >
               Menu
             </Link>
             <Link
               href="/about"
-              className="block text-brand-dark hover:text-brand-forest transition-colors py-2"
+              className={mobileLinkClasses('/about')}
               onClick={() => setIsMenuOpen(false)}
             >
               About
             </Link>
             <Link
               href="/location"
-              className="block text-brand-dark hover:text-brand-forest transition-colors py-2"
+              className={mobileLinkClasses('/location')}
               onClick={() => setIsMenuOpen(false)}
             >
               Location
