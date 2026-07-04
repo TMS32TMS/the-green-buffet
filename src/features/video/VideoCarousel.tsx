@@ -1,10 +1,11 @@
 'use client';
 
-import { useState,  useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, EffectFade } from 'swiper/modules';
 import type { Swiper as SwiperType } from 'swiper';
 import { HERO_VIDEOS } from '@/lib/constants';
+import { useVideoPlayback } from '@/hooks/useVideoPlayback';
 
 // Import Swiper styles
 import 'swiper/css';
@@ -84,30 +85,41 @@ export default function VideoCarousel() {
   );
 }
 
-function VideoSlide({ video, isActive }: { video: { src: string; poster?: string; alt: string }; isActive: boolean }) {
+function VideoSlide({
+  video,
+  isActive,
+}: {
+  video: { src: string; poster?: string; alt: string };
+  isActive: boolean;
+}) {
+  const { videoRef, play, pause } = useVideoPlayback();
+
+  useEffect(() => {
+    if (isActive) {
+      play();
+    } else {
+      pause();
+    }
+  }, [isActive, play, pause]);
+
   return (
     <div className="w-full h-full relative bg-brand-dark">
-      {/* Placeholder gradient while video loads */}
-      <div className="absolute inset-0 bg-linear-to-br from-brand-forest via-brand-leaf to-brand-dark" />
+      {/* Brand gradient background (shows while video loads) */}
+      <div className="absolute inset-0 bg-gradient-to-br from-brand-forest via-brand-leaf to-brand-dark" />
 
       {/* Video element */}
       <video
+        ref={videoRef}
         className="absolute inset-0 w-full h-full object-cover"
         src={video.src}
         poster={video.poster}
         muted
         loop
         playsInline
-        autoPlay={isActive}
+        preload="auto"
         aria-label={video.alt}
+        crossOrigin="anonymous"
       />
-
-      {/* Fallback for when video hasn't loaded */}
-      <div className="absolute inset-0 flex items-center justify-center text-white/20">
-        <svg className="w-16 h-16" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M8 5v14l11-7z" />
-        </svg>
-      </div>
     </div>
   );
 }

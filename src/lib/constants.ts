@@ -12,18 +12,18 @@ export const NAV_LINKS = [
 // Placeholder videos — replace with actual videos later
 export const HERO_VIDEOS: VideoSource[] = [
   {
-    src: '/videos/hero-1.mp4',
-    poster: '/images/hero-poster-1.jpg',
+    src: '/videos/b.mp4',
+    poster: '',
     alt: 'Fresh ingredients being prepared at The Green Buffet',
   },
   {
-    src: '/videos/hero-2.mp4',
-    poster: '/images/hero-poster-2.jpg',
+    src: 'https://videos.pexels.com/video-files/3255275/3255275-uhd_2560_1440_24fps.mp4',
+    poster: '',
     alt: 'Building a custom bowl with fresh vegetables',
   },
   {
-    src: '/videos/hero-3.mp4',
-    poster: '/images/hero-poster-3.jpg',
+    src: 'https://videos.pexels.com/video-files/4065411/4065411-uhd_2560_1440_25fps.mp4',
+    poster: '',
     alt: 'A finished signature burrito being wrapped',
   },
 ];
