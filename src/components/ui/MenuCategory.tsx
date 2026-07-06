@@ -8,6 +8,7 @@ interface MenuItem {
   name: string;
   description: string;
   price: number;
+  image?: string;
   dietary?: string[];
   popular?: boolean;
 }
@@ -28,7 +29,6 @@ export default function MenuCategory({ title, description, icon, items }: MenuCa
       transition={{ duration: 0.5 }}
       className="mb-16"
     >
-      {/* Category header */}
       <div className="flex items-center gap-4 mb-4">
         <div className="bg-brand-forest/10 p-3 rounded-xl text-brand-forest">
           {icon}
@@ -41,10 +41,8 @@ export default function MenuCategory({ title, description, icon, items }: MenuCa
         </div>
       </div>
 
-      {/* Divider */}
       <div className="h-px bg-gradient-to-r from-brand-forest/30 via-brand-forest/10 to-transparent mb-8" />
 
-      {/* Items grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {items.map((item, index) => (
           <MenuCard
@@ -52,6 +50,7 @@ export default function MenuCategory({ title, description, icon, items }: MenuCa
             name={item.name}
             description={item.description}
             price={item.price}
+            image={item.image}
             dietary={item.dietary}
             popular={item.popular}
             index={index}

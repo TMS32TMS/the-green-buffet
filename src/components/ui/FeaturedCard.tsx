@@ -1,15 +1,23 @@
 'use client';
 
-import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import Image from 'next/image';
+
+interface Variant {
+  name: string;
+  description: string;
+  price: string;
+}
 
 interface FeaturedCardProps {
   title: string;
   subtitle: string;
   description: string;
   price: string;
+  image?: string;
   imageSide: 'left' | 'right';
-  href: string;
+  variants?: Variant[];
 }
 
 export default function FeaturedCard({
@@ -17,31 +25,37 @@ export default function FeaturedCard({
   subtitle,
   description,
   price,
+  image,
   imageSide,
-  href,
+  variants,
 }: FeaturedCardProps) {
+  const [imageError, setImageError] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(false);
+
   const imageContent = (
     <div className="relative h-64 md:h-full min-h-[300px] bg-gradient-to-br from-brand-forest/30 to-brand-leaf/40 overflow-hidden">
-      {/* Placeholder food image */}
-      <div className="absolute inset-0 flex items-center justify-center">
-        <div className="text-center text-brand-forest/30">
-          <svg className="w-24 h-24 mx-auto mb-2" fill="currentColor" viewBox="0 0 24 24">
-            {imageSide === 'left' ? (
-              <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2zm0-10h2v8h-2z" />
-            ) : (
-              <path d="M17 1.01L7 1c-1.1 0-2 .9-2 2v18c0 1.1.9 2 2 2h10c1.1 0 2-.9 2-2V3c0-1.1-.9-1.99-2-1.99zM17 21H7v-1h10v1zm0-3H7V6h10v12zm0-14H7V3h10v1z" />
-            )}
+      {image && !imageError ? (
+        <Image
+          src={image}
+          alt={title}
+          fill
+          className="object-cover"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          onError={() => setImageError(true)}
+        />
+      ) : (
+        <div className="absolute inset-0 flex items-center justify-center text-brand-forest/30">
+          <svg className="w-24 h-24" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 15h2v2h-2zm0-10h2v8h-2z" />
           </svg>
         </div>
-      </div>
+      )}
 
-      {/* Overlay label */}
-      <div className="absolute top-4 left-4 bg-brand-warm text-white px-4 py-2 rounded-full text-sm font-bold">
+      <div className="absolute top-4 left-4 bg-brand-warm text-white px-4 py-2 rounded-full text-sm font-bold z-10">
         {subtitle}
       </div>
 
-      {/* Price tag */}
-      <div className="absolute bottom-4 right-4 bg-white text-brand-forest px-4 py-2 rounded-full text-lg font-bold shadow-lg">
+      <div className="absolute bottom-4 right-4 bg-white text-brand-forest px-4 py-2 rounded-full text-lg font-bold shadow-lg z-10">
         {price}
       </div>
     </div>
@@ -56,15 +70,62 @@ export default function FeaturedCard({
         {title}
       </h3>
       <p className="text-gray-600 mb-6 leading-relaxed">{description}</p>
-      <Link
-        href={href}
-        className="inline-flex items-center gap-2 bg-brand-forest text-white px-6 py-3 rounded-full font-medium hover:bg-brand-leaf transition-colors self-start"
-      >
-        Order This
-        <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-        </svg>
-      </Link>
+
+      {variants && variants.length > 0 ? (
+        <>
+          <button
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="inline-flex items-center gap-2 bg-brand-forest text-white px-6 py-3 rounded-full font-medium hover:bg-brand-leaf transition-colors self-start"
+          >
+            {isExpanded ? 'Hide Options' : 'View Varieties'}
+            <svg
+              className={`w-4 h-4 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+            </svg>
+          </button>
+
+          <AnimatePresence>
+            {isExpanded && (
+              <motion.div
+                initial={{ opacity: 0, height: 0 }}
+                animate={{ opacity: 1, height: 'auto' }}
+                exit={{ opacity: 0, height: 0 }}
+                transition={{ duration: 0.3 }}
+                className="overflow-hidden"
+              >
+                <div className="mt-6 space-y-4">
+                  {variants.map((variant) => (
+                    <motion.div
+                      key={variant.name}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="bg-brand-cream rounded-xl p-4 border border-brand-forest/10 hover:border-brand-forest/30 transition-colors"
+                    >
+                      <div className="flex items-center justify-between mb-1">
+                        <h4 className="font-bold text-brand-dark">{variant.name}</h4>
+                        <span className="font-bold text-brand-warm">{variant.price}</span>
+                      </div>
+                      <p className="text-gray-500 text-sm">{variant.description}</p>
+                    </motion.div>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </>
+      ) : (
+        <button className="inline-flex items-center gap-2 bg-brand-forest text-white px-6 py-3 rounded-full font-medium hover:bg-brand-leaf transition-colors self-start">
+          View Varieties
+          <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+        </button>
+      )}
     </div>
   );
 

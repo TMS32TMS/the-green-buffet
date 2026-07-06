@@ -57,12 +57,12 @@ export default function VideoCarousel() {
             >
               View Our Menu
             </a>
-            <a
+            {/*<a
               href="/order"
               className="bg-white/20 hover:bg-white/30 backdrop-blur-sm text-white px-8 py-4 rounded-full text-lg font-medium transition-colors border border-white/30"
             >
               Order Now
-            </a>
+            </a>*/}
           </div>
         </div>
       </div>

@@ -31,7 +31,7 @@ export default function Footer() {
             {/* Social media */}
             <div className="flex gap-3">
               <a
-                href="https://instagram.com"
+                href="https://www.instagram.com/thegreenbuffet?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw=="
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 hover:bg-brand-fresh p-2.5 rounded-full transition-colors"
@@ -39,7 +39,7 @@ export default function Footer() {
               >
                 <FaInstagram className="w-4 h-4" />
               </a>
-              <a
+              {/*<a
                 href="https://facebook.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -47,9 +47,9 @@ export default function Footer() {
                 aria-label="Follow us on Facebook"
               >
                 <FaFacebookF className="w-4 h-4" />
-              </a>
+              </a>*/}
               <a
-                href="https://tiktok.com"
+                href="https://www.tiktok.com/@the.green.buffet?is_from_webapp=1&sender_device=pc"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="bg-white/10 hover:bg-brand-fresh p-2.5 rounded-full transition-colors"
@@ -57,7 +57,7 @@ export default function Footer() {
               >
                 <FaTiktok className="w-4 h-4" />
               </a>
-              <a
+              {/*<a
                 href="https://yelp.com"
                 target="_blank"
                 rel="noopener noreferrer"
@@ -65,7 +65,7 @@ export default function Footer() {
                 aria-label="Find us on Yelp"
               >
                 <FaYelp className="w-4 h-4" />
-              </a>
+              </a>*/}
             </div>
           </div>
 
@@ -98,20 +98,20 @@ export default function Footer() {
                 </Link>
               </li>
               <li>
-                <Link
+                {/*<Link
                   href="/order"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Order Online
-                </Link>
+                </Link>*/}
               </li>
               <li>
-                <Link
+                {/*<Link
                   href="/catering"
                   className="text-gray-400 hover:text-white transition-colors"
                 >
                   Catering
-                </Link>
+                </Link>*/}
               </li>
             </ul>
           </div>

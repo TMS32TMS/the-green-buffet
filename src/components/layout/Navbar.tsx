@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import { HiMenu, HiX } from 'react-icons/hi';
+import Image from 'next/image';
 
 export default function Navbar() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -21,9 +22,18 @@ export default function Navbar() {
           {/* Logo */}
           <Link
             href="/"
-            className="text-xl font-bold text-brand-forest hover:text-brand-leaf transition-colors"
+            className=" flex items-center gap-3 text-xl font-bold text-brand-forest hover:text-brand-leaf transition-colors"
           >
             The Green Buffet
+
+          {/*<Image
+            src="/videos/48.jpg"
+            alt="The Green Buffet"
+            width={36}
+            height={36}
+            className="w-10 h-10 object-contain"
+            />*/}
+            
           </Link>
 
           {/* Desktop Navigation */}
@@ -46,12 +56,12 @@ export default function Navbar() {
             >
               Location
             </Link>
-            <Link
+           {/* <Link
               href="/order"
               className="bg-brand-warm text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors font-medium"
             >
               Order Now
-            </Link>
+            </Link>*/}
           </div>
 
           {/* Mobile Menu Button */}
@@ -95,13 +105,13 @@ export default function Navbar() {
             >
               Location
             </Link>
-            <Link
+            {/*<Link
               href="/order"
               className="block text-center bg-brand-warm text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors font-medium"
               onClick={() => setIsMenuOpen(false)}
             >
               Order Now
-            </Link>
+            </Link>*/}
           </div>
         </div>
       )}

@@ -58,19 +58,14 @@ export default function MenuPage() {
           <h2 className="text-3xl md:text-4xl font-bold text-white mb-4">
             Ready to Order?
           </h2>
-          <p className="text-gray-300 max-w-xl mx-auto mb-8 text-lg">
-            Build your perfect bowl or burrito online. Fresh, fast, and made just for you.
+          <p className="text-gray-300 max-w-xl mx-auto mb-5 text-lg">
+            Build your perfect bowl or burrito. Fresh, fast, and made just for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <a
-              href="/order"
-              className="bg-brand-warm hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
-            >
-              Order Online
-            </a>
+
             <a
               href="/location"
-              className="bg-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors border border-white/30"
+              className="bg-brand-warm hover:bg-orange-600 text-white px-8 py-4 rounded-full text-lg font-medium transition-colors"
             >
               Find Location
             </a>

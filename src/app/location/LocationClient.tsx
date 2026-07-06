@@ -74,14 +74,7 @@ export default function LocationClient({
           >
             {fullAddress}
           </motion.p>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5, duration: 0.5 }}
-            className="text-gray-400 text-sm mt-3"
-          >
-            {coordinates.lat.toFixed(4)}, {coordinates.lng.toFixed(4)}
-          </motion.p>
+         
         </div>
         {/* Wave */}
         <div className="absolute bottom-0 left-0 right-0">
@@ -118,15 +111,7 @@ export default function LocationClient({
           </div>
           {/* Map action buttons */}
           <div className="absolute bottom-4 left-4 right-4 z-10 flex flex-col sm:flex-row gap-3">
-            <a
-              href={googleMapsUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-white text-brand-forest px-4 py-2.5 rounded-full text-sm font-medium shadow-lg hover:bg-brand-cream transition-colors inline-flex items-center justify-center gap-2"
-            >
-              <HiArrowRight className="w-4 h-4" />
-              Get Directions
-            </a>
+            
             <a
               href={mapsPlaceUrl}
               target="_blank"
@@ -263,7 +248,7 @@ export default function LocationClient({
             </motion.div>
 
             {/* Getting Here */}
-            <motion.div
+           {/*} <motion.div
               initial={{ opacity: 0, x: 30 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -294,7 +279,7 @@ export default function LocationClient({
                   </p>
                 </div>
               </div>
-            </motion.div>
+            </motion.div>*/}
 
             {/* Review highlight */}
             <motion.div
@@ -310,9 +295,9 @@ export default function LocationClient({
                 ))}
               </div>
               <p className="text-lg font-medium mb-2">
-                &quot;Best healthy bowls in Portland! Fresh ingredients and amazing flavors.&quot;
+                &quot;Best healthy bowls in lusaka! Fresh ingredients and amazing flavors.&quot;
               </p>
-              <p className="text-white/80 text-sm">— Sarah M., Local Guide</p>
+             {/* <p className="text-white/80 text-sm">— Sarah M., Local Guide</p> */}
             </motion.div>
           </div>
         </div>

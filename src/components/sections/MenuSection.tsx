@@ -36,6 +36,7 @@ export default function MenuSection() {
                 price={item.price}
                 dietary={item.dietary}
                 popular={item.popular}
+                image="/videos/S.jpg"
                 index={index}
               />
             ))}
@@ -60,6 +61,7 @@ export default function MenuSection() {
                 dietary={item.dietary}
                 popular={item.popular}
                 index={index}
+                image="/videos/c.jpg"
               />
             ))}
           </div>

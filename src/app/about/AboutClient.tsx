@@ -127,14 +127,14 @@ export default function AboutClient() {
                 <p>
                   The Green Buffet was born from a simple idea: healthy food should be
                   delicious, accessible, and made with real ingredients. In 2020, Chef
-                  Mwamba noticed a gap in Lusaka&apos;s food scene — people wanted nutritious
+                  Mwamba noticed a gap in Lusaka&apos;s food scene, people wanted nutritious
                   meals but didn&apos;t have enough options that were both healthy and satisfying.
                 </p>
                 <p>
                   Starting from a small kitchen at Liberty Mall, we began crafting bowls
                   and burritos using fresh, locally-sourced ingredients. Word spread quickly.
                   Customers loved that they could build their own meals exactly how they
-                  wanted them — no compromises on taste or nutrition.
+                  wanted them no compromises on taste or nutrition.
                 </p>
                 <p>
                   Today, The Green Buffet serves hundreds of happy customers every week.

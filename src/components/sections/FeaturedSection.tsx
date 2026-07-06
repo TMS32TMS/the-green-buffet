@@ -1,10 +1,40 @@
 import FeaturedCard from '@/components/ui/FeaturedCard';
 
+const bowlVariants = [
+  {
+    name: 'Chicken Teriyaki Bowl',
+    description: 'Sauteed spicy teriyaki chicken, toppings & signature sauces.',
+    price: 'K75.00',
+  },
+  {
+    name: 'Garden Salad',
+    description: 'Veggies only.',
+    price: 'K60.00',
+  },
+  {
+    name: 'Beef Birria Bowl',
+    description: 'Slow-cooked birria beef, rice, toppings, & signature sauces.',
+    price: 'K75.00',
+  },
+];
+
+const burritoVariants = [
+  {
+    name: 'Spicy Chicken Teriyaki Burrito',
+    description: 'Sauteed spicy teriyaki chicken, toppings & signature sauces wrapped in a warm tortilla.',
+    price: 'k100.00',
+  },
+  {
+    name: 'Beef Birria Burrito',
+    description: 'Slow-cooked birria beef, rice, toppings, & signature sauces wrapped in a warm tortilla.',
+    price: 'K100.00',
+  },
+];
+
 export default function FeaturedSection() {
   return (
     <section className="py-16 md:py-20 bg-white" id="featured">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section header */}
         <div className="text-center mb-12">
           <span className="text-brand-fresh font-semibold text-sm uppercase tracking-wider">
             Customer Favorites
@@ -18,24 +48,25 @@ export default function FeaturedSection() {
           </p>
         </div>
 
-        {/* Featured cards */}
         <div className="space-y-8">
           <FeaturedCard
             title="The Signature Bowl"
             subtitle="Most Popular"
-            description="Brown rice, black beans, grilled chicken, fresh avocado, pico de gallo, corn salsa, and our signature green sauce. The bowl that started it all."
-            price="$12.99"
+            description="Choose from our chef-curated signature bowls. Each one packed with fresh ingredients and bold flavors."
+            price="From k75.00"
+            image="/videos/17.jpg"
             imageSide="left"
-            href="/menu#signature-bowl"
+            variants={bowlVariants}
           />
 
           <FeaturedCard
             title="The Signature Burrito"
             subtitle="Fan Favorite"
-            description="A large flour tortilla packed with your choice of protein, Mexican rice, black beans, cheese, sour cream, and fresh salsa. Big enough to satisfy any appetite."
-            price="$13.99"
+            description="Choose from our signature burritos. Wrapped tight and packed with the good stuff."
+            price="From k100.00"
+            image="/videos/13.jpg"
             imageSide="right"
-            href="/menu#signature-burrito"
+            variants={burritoVariants}
           />
         </div>
       </div>
